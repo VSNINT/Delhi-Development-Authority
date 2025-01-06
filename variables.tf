@@ -94,3 +94,24 @@ variable "storage_account_key" {
   default = "12345"
 }
 
+# Azure Authentication Variables
+variable "client_id" {
+  description = "The client ID of the Azure service principal"
+  type        = string
+}
+
+variable "client_secret" {
+  description = "The client secret of the Azure service principal"
+  type        = string
+}
+
+variable "tenant_id" {
+  description = "The tenant ID of the Azure subscription"
+  type        = string
+}
+
+variable "subscription_id" {
+  description = "The subscription ID of the Azure subscription"
+  type        = string
+}
+
