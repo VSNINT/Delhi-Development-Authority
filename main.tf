@@ -28,7 +28,7 @@ resource "azurerm_public_ip" "public_ip" {
   name                = var.public_ip_name
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
 }
 
 # Network Interface
@@ -45,11 +45,9 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-
-
 # Key Vault
 resource "azurerm_key_vault" "kv" {
-  name                = "my-key-vault"
+  name                = "my-key-vault-new3254187"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku_name            = "standard"
@@ -58,7 +56,7 @@ resource "azurerm_key_vault" "kv" {
 
 # SQL Server
 resource "azurerm_mssql_server" "sql" {
-  name                         = "my-sql-server"
+  name                         = "my-sql-server-324"
   resource_group_name          = azurerm_resource_group.rg.name
   location                     = azurerm_resource_group.rg.location
   version                      = "12.0"
@@ -66,12 +64,19 @@ resource "azurerm_mssql_server" "sql" {
   administrator_login_password = "P@ssw0rd123!"
 }
 
+# SQL Server Security Alert Policy
+resource "azurerm_mssql_server_security_alert_policy" "example" {
+  server_name         = azurerm_mssql_server.sql.name
+  resource_group_name = azurerm_resource_group.rg.name
+  state                        = "Enabled"
+}
+
 # App Service Plan (Windows)
 resource "azurerm_service_plan" "asp" {
   name                = "my-service-plan"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  os_type             = "Windows"  # Changed to Windows
+  os_type             = "Windows"
   sku_name            = "B1"
 }
 
@@ -84,6 +89,10 @@ resource "azurerm_windows_web_app" "app" {
 
   site_config {
     always_on = true
-    # Add other configurations here as needed
+  }
+
+  app_settings = {
+    "WEBSITE_RUN_FROM_PACKAGE" = "1"
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = "appkey"
   }
 }
