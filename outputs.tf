@@ -22,3 +22,4 @@ output "app_service_id" {
   description = "The ID of the App Service"
   value       = azurerm_windows_web_app.app.id
 }
+
