@@ -114,4 +114,3 @@ variable "subscription_id" {
   description = "The subscription ID of the Azure subscription"
   type        = string
 }
-
