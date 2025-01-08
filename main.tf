@@ -6,6 +6,8 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
   subscription_id = var.subscription_id
 }
+# Declare the data source
+data "azurerm_client_config" "current" {}
 
 # Resource Group
 resource "azurerm_resource_group" "rg" {
