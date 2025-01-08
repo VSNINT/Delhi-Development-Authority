@@ -55,7 +55,7 @@ variable "ip_configuration_name" {
 variable "key_vault_name" {
   type        = string
   description = "my-key-vault-new"
-  default     = "my-key-vault-new123"
+  default     = "my-key-vault-unique12345"
 }
 
 variable "sql_server_name" {
