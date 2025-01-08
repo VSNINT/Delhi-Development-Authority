@@ -55,7 +55,7 @@ resource "azurerm_network_interface" "nic" {
 
 # Key Vault
 resource "azurerm_key_vault" "kv" {
-  name                = "my-key-vault-new3254187"
+  name                = "my-key-vault-unique12345"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku_name            = "standard"
