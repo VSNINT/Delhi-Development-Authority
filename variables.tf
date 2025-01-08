@@ -55,7 +55,7 @@ variable "ip_configuration_name" {
 variable "key_vault_name" {
   type        = string
   description = "my-key-vault-new"
-  default     = "my-key-vault-new"
+  default     = "my-key-vault-new123"
 }
 
 variable "sql_server_name" {
@@ -85,13 +85,13 @@ variable "service_plan_name" {
 variable "app_service_name" {
   type        = string
   description = "The name of the App Service"
-  default     = "ddasmartcity1"
+  default     = "ddasmartcity123"
 }
 
 variable "storage_account_key" {
   type        = string
   description = "12345"
-  default = "12345"
+  default = "123456"
 }
 
 # Azure Authentication Variables
